@@ -246,7 +246,11 @@
                     </td>
                     <td style="text-align: center;">
                         @if($pjm->status_peminjaman === 'dipinjam')
-                            <span class="pill pill-warning"><i class="fas fa-clock"></i> Sedang Dipinjam</span>
+                            @if($pjm->ada_terlambat)
+                                <span class="pill pill-danger"><i class="fas fa-clock"></i> Sedang Dipinjam (Telat)</span>
+                            @else
+                                <span class="pill pill-warning"><i class="fas fa-clock"></i> Sedang Dipinjam</span>
+                            @endif
                         @elseif($pjm->status_peminjaman === 'dikembalikan')
                             <span class="pill pill-danger"><i class="fas fa-exclamation-triangle"></i> Belum Selesai (Denda)</span>
                         @else

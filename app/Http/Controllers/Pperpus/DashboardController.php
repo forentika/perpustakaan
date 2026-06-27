@@ -27,6 +27,13 @@ class DashboardController extends Controller
         $stats['buku_dipinjam_hari_ini'] = DetailPeminjaman::whereHas('peminjaman', function ($q) {
             $q->whereDate('tanggal_pinjam', Carbon::today());
         })->count();
+        // Update status buku yang terlambat secara otomatis
+        DetailPeminjaman::where('status_detail', 'dipinjam')
+            ->where('sumber_buku', 'buku perpus')
+            ->whereNotNull('tanggal_jatuh_tempo')
+            ->whereDate('tanggal_jatuh_tempo', '<', now()->startOfDay())
+            ->update(['status_detail' => 'terlambat']);
+
         $stats['peminjaman_aktif'] = Peminjaman::where('status_peminjaman', 'dipinjam')->count();
         $stats['buku_terlambat']   = DetailPeminjaman::where('status_detail', 'terlambat')->count();
 
