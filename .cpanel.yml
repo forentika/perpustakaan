@@ -3,10 +3,16 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/elih9626/public_html
 
-    - /bin/cp -R public/* $DEPLOYPATH
+    # Salin asset (kecuali index.php)
+    - /bin/cp -R public/css $DEPLOYPATH 2>/dev/null || true
+    - /bin/cp -R public/js $DEPLOYPATH 2>/dev/null || true
+    - /bin/cp -R public/build $DEPLOYPATH 2>/dev/null || true
+    - /bin/cp -R public/images $DEPLOYPATH 2>/dev/null || true
+    - /bin/cp -R public/storage $DEPLOYPATH 2>/dev/null || true
+    - /bin/cp public/favicon.ico $DEPLOYPATH 2>/dev/null || true
+    - /bin/cp .htaccess $DEPLOYPATH/.htaccess 2>/dev/null || true
 
     # Bersihkan cache Laravel
+    - cd /home/elih9626/repositories/perpustakaan
     - php artisan optimize:clear
-
-    # Cache ulang konfigurasi
     - php artisan config:cache
