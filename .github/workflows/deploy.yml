@@ -1,15 +1,33 @@
-name: Test Secret
+name: Deploy Laravel to Rumahweb
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Host Length
-        run: |
-          echo "Length=${#HOST}"
-        env:
-          HOST: ${{ secrets.HOST }}
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          debug: true
+
+          script: |
+            cd /home/elih9626/repositories/perpustakaan
+
+            git fetch origin
+            git reset --hard origin/main
+
+            composer install --no-dev --optimize-autoloader
+
+            php artisan optimize:clear
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
