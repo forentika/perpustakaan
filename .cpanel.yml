@@ -1,5 +1,12 @@
 ---
 deployment:
-tasks:
-- export DEPLOYPATH=/home/usercpanel/public_html/git
-- /bin/cp -r * $DEPLOYPATH
+  tasks:
+    - export DEPLOYPATH=/home/elih9626/public_html
+
+    - /bin/cp -R public/* $DEPLOYPATH
+
+    # Bersihkan cache Laravel
+    - php artisan optimize:clear
+
+    # Cache ulang konfigurasi
+    - php artisan config:cache
