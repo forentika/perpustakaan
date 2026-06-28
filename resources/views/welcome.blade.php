@@ -52,7 +52,7 @@
             <!-- Judul Utama yang Tegas & Berwibawa -->
             <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-wide font-classic drop-shadow-md">
                 Gerbang Ilmu <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-white">Masa Depan</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-white">Masa Depan Bangsa</span>
             </h2>
 
             <!-- Deskripsi Singkat & Jelas -->
