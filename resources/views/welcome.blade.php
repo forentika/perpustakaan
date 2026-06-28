@@ -74,13 +74,6 @@
             <div>
                 &copy; 2026 E-Library SMPN 8 Percut Sei Tuan.
             </div>
-            <div class="flex gap-4 text-gray-500">
-                <span>Cerdas</span>
-                <span>•</span>
-                <span>Berkarakter</span>
-                <span>•</span>
-                <span>Literat</span>
-            </div>
         </footer>
 
     </div>
