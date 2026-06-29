@@ -109,9 +109,17 @@ class BukuController extends Controller
         }
 
         
-        if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('buku', 'public');
-        }
+if ($request->hasFile('gambar')) {
+
+    $file = $request->file('gambar');
+
+    dd([
+        'original_name' => $file->getClientOriginalName(),
+        'is_valid'      => $file->isValid(),
+        'disk'          => config('filesystems.default'),
+        'store'         => $file->store('buku', 'public'),
+    ]);
+}
 
         Buku::create($data);
 
