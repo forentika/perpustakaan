@@ -421,7 +421,7 @@ class PeminjamanController extends Controller
 
     public function lunasDendaPerpustakaan(Request $request, Peminjaman $peminjaman, DetailPeminjaman $detail)
     {
-        abort_if($detail->id_peminjaman !== $peminjaman->id_peminjaman, 403);
+        abort_if($detail->id_peminjaman != $peminjaman->id_peminjaman, 403);
         abort_if($detail->status_denda !== 'belum_lunas', 422, 'Denda sudah lunas atau tidak ada denda.');
 
         $detail->lunaskanDenda();

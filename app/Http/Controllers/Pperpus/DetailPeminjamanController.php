@@ -19,7 +19,7 @@ class DetailPeminjamanController extends Controller
     
     public function perpanjang(Request $request, Peminjaman $peminjaman, DetailPeminjaman $detail)
     {
-        abort_if($detail->id_peminjaman !== $peminjaman->id_peminjaman, 403);
+        abort_if($detail->id_peminjaman != $peminjaman->id_peminjaman, 403);
 
         if ($detail->sumber_buku !== 'buku perpus') {
             return back()->with('error', 'Buku BOS tidak bisa diperpanjang masa pinjamnya.');
@@ -51,7 +51,7 @@ class DetailPeminjamanController extends Controller
     
     public function hitungUlangDenda(Peminjaman $peminjaman, DetailPeminjaman $detail)
     {
-        abort_if($detail->id_peminjaman !== $peminjaman->id_peminjaman, 403);
+        abort_if($detail->id_peminjaman != $peminjaman->id_peminjaman, 403);
 
         if ($detail->sumber_buku !== 'buku perpus') {
             return back()->with('info', 'Buku BOS tidak punya denda harian otomatis.');
@@ -90,7 +90,7 @@ class DetailPeminjamanController extends Controller
     
     public function destroy(Peminjaman $peminjaman, DetailPeminjaman $detail)
     {
-        abort_if($detail->id_peminjaman !== $peminjaman->id_peminjaman, 403);
+        abort_if($detail->id_peminjaman != $peminjaman->id_peminjaman, 403);
 
         if (!in_array($detail->status_detail, ['dipinjam'])) {
             return back()->with('error', 'Tidak bisa membatalkan buku yang sudah diproses.');
