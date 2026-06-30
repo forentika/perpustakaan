@@ -57,7 +57,7 @@
 
             <!-- Deskripsi Singkat & Jelas -->
             <p class="text-gray-300 text-sm md:text-base font-light leading-relaxed mb-8 max-w-lg mx-auto border-b border-white/10 pb-6">
-                Akses ribuan buku, jurnal, dan materi pembelajaran digital dalam satu platform terintegrasi. Mewujudkan generasi UPT SPF SMP Negeri 8 yang cerdas dan berkarakter.
+                 ribuan buku, jurnal, dan materi pembelajaran digital dalam satu platform terintegrasi. Mewujudkan generasi UPT SPF SMP Negeri 8 yang cerdas dan berkarakter.
             </p>
 
             <!-- Tombol Aksi Utama yang Rapi -->
